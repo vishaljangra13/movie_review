@@ -6,39 +6,40 @@
     <title> EDIT PROFILE</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="/css/edit_user_profile.css">
     <%- include('includes/head_css.ejs') %>
 
 </head>
 
-<body align='center'>
-    <div class="container">
+<body align='center' background="/img/sky.jpg">
+
 
         <%- include('includes/navigation.ejs') %>
+        <div class="container c1">
 
         <% let x="/user/edit/profile/"+userId; %>
 
-        <form class="well form-horizontal" action="<%= x %>" method="POST" id="contact_form">
+        <form class="well form-horizontal" action="<%= x %>" method="POST" id="contact_form" style="background:transparent">
             <fieldset>
 
                 <!-- Form Name -->
                 <legend>
                     <center>
-                        <h2><b>Edit Profile</b></h2>
+                        <h2 style="color:#276edb"><b>Edit Profile</b></h2>
                     </center>
                 </legend><br>
 
                 <!-- Text input-->
 
-            
+
 
                 <!-- Text input-->
 
-                <div class="form-group">
+                <div class="form-group ">
                     <label class="col-md-4 control-label">About</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <span style="color:#8c93e6" class="input-group-addon"><i
+                            <span style="color:#276edb" class="input-group-addon"><i
                                     class="glyphicon glyphicon-user"></i></span>
                             <input name="about" placeholder="About" class="form-control" type="text" width="100"
                                 height="100">
@@ -54,7 +55,7 @@
                     <label class="col-md-4 control-label">Hobbies</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <span style="color:#8c93e6" class="input-group-addon"><i
+                            <span style="color:#276edb" class="input-group-addon"><i
                                     class="glyphicon glyphicon-user"></i></span>
                             <input name="hobbies" placeholder="Hobbies" class="form-control" type="text">
                         </div>
@@ -67,7 +68,7 @@
                     <label class="col-md-4 control-label">Favourite Movies</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
-                            <span style="color:#8c93e6" class="input-group-addon"><i
+                            <span style="color:#276edb" class="input-group-addon"><i
                                     class="glyphicon glyphicon-user"></i></span>
                             <input name="favouriteMovies" placeholder="Movies" class="form-control" type="text">
                         </div>
@@ -84,7 +85,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4"><br>
-                        <button style="color:blue" type="submit" class="btn btn-large">SUBMIT <span style="color:blue"
+                <button style="color:white" type="submit" class="btn btn-primary">SUBMIT <span style="color:white"
                                 class="glyphicon glyphicon-send"></span></button>
                     </div>
                 </div>

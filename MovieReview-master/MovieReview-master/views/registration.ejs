@@ -11,7 +11,7 @@
 
 </head>
 
-<body align='center'>
+<body align='center' background="/img/sky.jpg">
 
     <%- include('includes/navigation.ejs') %>
 
@@ -21,20 +21,20 @@
 
     <div class="container">
 
-        <form class="well form-horizontal" action="/user/register" method="post" id="contact_form">
+        <form class="well form-horizontal" action="/user/register" method="post" id="contact_form" style="background:transparent">
             <fieldset>
 
                 <!-- Form Name -->
                 <legend>
                     <center>
-                        <h2><b>Registration</b></h2>
+                        <h2 style="color:#276edb"><b>Registration</b></h2>
                     </center>
                 </legend><br>
 
                 <!-- Text input-->
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">First Name</label>
+                    <label  style="color:white" class="col-md-4 control-label">First Name</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -46,7 +46,7 @@
                 <!-- Text input-->
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Last Name</label>
+                    <label style="color:white" class="col-md-4 control-label">Last Name</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -60,7 +60,7 @@
                 <!-- Text input-->
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Username</label>
+                    <label style="color:white" class="col-md-4 control-label">Username</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -72,7 +72,7 @@
                 <!-- Text input-->
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Password</label>
+                    <label style="color:white" class="col-md-4 control-label">Password</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -84,7 +84,7 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label">E-Mail</label>
+                    <label style="color:white" class="col-md-4 control-label">E-Mail</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
@@ -97,7 +97,7 @@
                 <!-- Text input-->
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label">Contact No.</label>
+                    <label style="color:white" class="col-md-4 control-label">Contact No.</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
@@ -113,7 +113,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4"><br>
-                        <button type="submit" class="btn btn-warning">SUBMIT <span
+                        <button type="submit" style="color:white" class="btn btn-primary">SUBMIT <span style="color:white"v
                                 class="glyphicon glyphicon-send"></span></button>
                     </div>
                 </div>

@@ -1,24 +1,23 @@
-<nav class="navbar  mynav" role="navigation" id="navbar">
+<nav class="navbar  mynav shift" role="navigation" id="navbar">
 
-    <a class="navbar-brand" style="font-family: 'DM Serif Text', serif;
-            color: white;">Movie Review</a>
+  <% let x; %>
+  <% if (userId==undefined) { %>
+      <% x="/home"; %>
+  <% }else{ %>
+      <% x="/home/"+userId; %>
+  <% } %>
+    <a href="<%= x %>"><img src="/img/logo.jfif" alt="hii" class="img-circle img-responsive" height="125px" width="125px"></a>
 
     <ul class="nav navbar-nav navbar-right" id="navlist">
-        <li>
-            <a class="dropbtn">Genre
-                <i class="fa fa-caret-down"></i>
-            </a>
-        </li>
+      <li><a  class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
+                    color: white;">Genre</a></li>
         <li>
 
             <% if (userId!= undefined ) { %>
             <% let y="/movie/search/"+userId; %>
 
             <form action="<%= y %>">
-        <li><input name="movieName" class="form-control" type="search" placeholder="Search Movie" aria-label="Search">
-        </li>
-
-        <li><a><span class="glyphicon glyphicon-search"></span></a>
+        <li><input name="movieName" class="form-control" type="search" placeholder="Search Movie,TV Shows and more....." aria-label="Search">
         </li>
         </form>
         <% }else{ %>
@@ -29,8 +28,7 @@
                     aria-label="Search">
             </li>
 
-            <li><a><span class="glyphicon glyphicon-search"></span></a>
-            </li>
+
         </form>
         <% } %>
         </li>
@@ -39,7 +37,7 @@
         <% let x="/user/profile/"+userId; %>
 
         <li><a href="<%= x %>" class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
-                      color: white;"><span class="glyphicon glyphicon-user"></span>User_Profile</a></li>
+                      color: white;"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
         <li><a href="/user/logout" class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
                       color: white;">Log out</a></li>
 

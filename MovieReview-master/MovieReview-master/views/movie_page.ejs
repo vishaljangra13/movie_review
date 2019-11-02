@@ -19,12 +19,15 @@
 <body background="/img/sky.jpg">
 
     <%- include('includes/navigation.ejs') %>
-    
+
     <h1 id="title"><%= title %></h1>
     <h3 id="titledetails"><%= genre %></h3>
     <img id="movieImage" class="center" style="background: url(<%= posterUrl %>);">
+    <br>
     <p id="details">
         <%= plot %><br><br><br>
+      </p>
+      <p id="details">
         RATING :
 
         <% if (rating < 1) { %>
@@ -95,20 +98,25 @@
         Director: <%= director %> <br>
         Writers: <%= writer %>
     </p>
+    <hr>
+    <h3 style="color:white">Comments:</h3>
 
     <% if(userId==undefined){ %>
     <h3 id="titledetails">PLEASE LOGIN TO POST A COMMENT</h3>
     <% }else { %>
     <!-- <form> -->
-    <textarea id="commentReview" name="comment" rows="8" cols="40" placeholder="Write Your Review.........."></textarea>
+    <div class="container">
+
+        <img src="/img/userprofile.jfif" alt="hii" class="img-circle img-responsive" height="50px" width="50px" align='left'>
+    <textarea   id="commentReview" name="comment" rows="8" cols="40" placeholder="Write Your Review.........."></textarea>
     <br>
     <input id="commentrating" name="com_rating" placeholder="Write Rating out of 5">
-    <button id="commentsubmit">Submit</button>
+    <button id="commentsubmit" class="btn btn-primary">Submit</button>
+    </div>
     <!-- </form> -->
     <% } %>
 
-    <h3 id="titledetails">Previous Comments</h3>
-    <hr>
+    <br><br>
 
 
     <div id="comments_load">
@@ -117,7 +125,7 @@
         const movieReview=movieReviewArray[index];
         const movieRating=movieRatingArray[index];
         const date=dateArray[index]; %>
-        <i class='fas fa-user-circle' style='font-size:20px;color:white;margin-left:200px'> <%= userName %>
+        <i class='fa fa-user-circle' style='font-size:20px;color:white;margin-left:200px'> <%= userName %>
             (<%= date %>)</i>
         <p id="titledetails"><%= movieReview %></p>
         <p style="margin-left:350px;color:white">
@@ -246,7 +254,7 @@
                     $("#comments_load").html(htmlString);
                 });
             });
-        });    
+        });
     </script>
 
 </body>

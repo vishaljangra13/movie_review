@@ -7,12 +7,11 @@
     <%- include('includes/head_css.ejs') %>
 </head>
 
-<body background="/img/sky.jpg">
+<body background="/img/sky.jpg" align="center">
 
     <%- include('includes/navigation.ejs') %>
-
-    <p style="font-size:76px; color:white;margin-left:400px">Ooops <br> MOVIE NOT FOUND</p>
-    <p style="color:white;margin-left:500px">Try searching another movie</p>
+    <img src="/img/giphy2.gif" alt="hii" height="500px" width="600px" style="border-radius:10%">
+    <h3 style="color:white">Try searching another movie.</h3>
 
     <% let x; %>
     <% if (userId==undefined) { %>
@@ -22,8 +21,7 @@
     <% } %>
 
     <form action="<%= x %>">
-        <input style="border-radius:10%;background:#00FFFF;color: black;margin-left:500px;height:50px;width:150px"
-            type="submit" name="" value="Go To Home">
+        <button type="submit" name="button" class="btn btn-primary">GO HOME!</button>
     </form>
 </body>
 
