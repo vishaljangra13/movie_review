@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/movieStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    <%- include('includes/head_css.ejs') %>
+</head>
+
+<body background="/img/sky.jpg">
+
+    <%- include('includes/navigation.ejs') %>
+    
+    <h1 id="title"><%= title %></h1>
+    <h3 id="titledetails"><%= genre %></h3>
+    <img id="movieImage" class="center" style="background: url(<%= posterUrl %>);">
+    <p id="details">
+        <%= plot %><br><br><br>
+        RATING :
+
+        <% if (rating < 1) { %>
+        <span class="fa fa-star-half-o checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating==1){ %>
+        <span class="fa fa-star-half-o checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating>1 && rating <2){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star-half-o checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating==2){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating> 2 && rating < 3){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star-half-o checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating==3){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating>3 && rating < 4){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star-half-o checked"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating==4){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <% }else if(rating>4 && rating < 5){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star-half-o checked"></span>
+        <% }else if(rating==5){ %>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <% } %>
+
+
+        <br>
+        Language : <%= language %> <br>
+        Director: <%= director %> <br>
+        Writers: <%= writer %>
+    </p>
+
+    <% if(userId==undefined){ %>
+    <h3 id="titledetails">PLEASE LOGIN TO POST A COMMENT</h3>
+    <% }else { %>
+    <!-- <form> -->
+    <textarea id="commentReview" name="comment" rows="8" cols="40" placeholder="Write Your Review.........."></textarea>
+    <br>
+    <input id="commentrating" name="com_rating" placeholder="Write Rating out of 5">
+    <button id="commentsubmit">Submit</button>
+    <!-- </form> -->
+    <% } %>
+
+    <h3 id="titledetails">Previous Comments</h3>
+    <hr>
+
+
+    <div id="comments_load">
+        <% for (let index = 0; index < userNameArray.length; index++) {
+        const userName = userNameArray[index];
+        const movieReview=movieReviewArray[index];
+        const movieRating=movieRatingArray[index];
+        const date=dateArray[index]; %>
+        <i class='fas fa-user-circle' style='font-size:20px;color:white;margin-left:200px'> <%= userName %>
+            (<%= date %>)</i>
+        <p id="titledetails"><%= movieReview %></p>
+        <p style="margin-left:350px;color:white">
+            RATING :
+            <% if (movieRating < 1) { %>
+            <span class="fa fa-star-half-o checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating==1){ %>
+            <span class="fa fa-star-half-o checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating>1 && movieRating <2){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star-half-o checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating==2){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating> 2 && movieRating < 3){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star-half-o checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating==3){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating>3 && movieRating < 4){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star-half-o checked"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating==4){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <% }else if(movieRating>4 && movieRating < 5){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star-half-o checked"></span>
+            <% }else if(movieRating==5){ %>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <% } %>
+        </p>
+        <% } %>
+
+    </div>
+
+    <!-- <p id="test" style="color: white;"> Bye</p> -->
+
+    <% let z="/movie/add/review/"+userId+"/"+imdbId %>
+    <script>
+        $(document).ready(function () {
+            $("#commentsubmit").click(function () {
+                var movieReview= $("#commentReview").val();
+                var movieRating= $("#commentrating").val();
+                // $("#test").html("Button clicked");
+                $("#commentReview").val('');
+                $("#commentrating").val('');
+                $.post("<%= z %>", {
+                    movieReview: movieReview,
+                    movieRating:movieRating,
+                    movieName: $("#title").text()
+                }, function (data, status) {
+                    // console.log(data);
+                    // var parsedData = JSON.parse(data);
+                    var parsedData=data;
+                    var htmlString = '';
+
+                    for (var index = 0; index < parsedData.userNameArray.length; index++) {
+                        const userName = parsedData.userNameArray[index];
+                        const movieReview = parsedData.movieReviewArray[index];
+                        const movieRating = parsedData.movieRatingArray[index];
+                        const date = parsedData.dateArray[index];
+
+
+                        htmlString += "<i class='fas fa-user-circle' style='font-size:20px;color:white;margin-left:200px'>" + userName + " ( " + date + " )</i>";
+                        htmlString += "<p id='titledetails'>" + movieReview + "</p>";
+                        htmlString += "<p style='margin-left:350px;color:white'>";
+                        htmlString += "RATING : ";
+                        if (movieRating < 1) {
+                            htmlString += '<span class="fa fa-star-half-o checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating == 1) {
+                            htmlString += '<span class="fa fa-star-half-o checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating > 1 && movieRating < 2) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star-half-o checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating == 2) {
+                            htmlString += ' <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating > 2 && movieRating < 3) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star-half-o checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating == 3) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating > 3 && movieRating < 4) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star-half-o checked"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating == 4) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span>';
+                        } else if (movieRating > 4 && movieRating < 5) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star-half-o checked"></span>';
+                        } else if (movieRating == 5) {
+                            htmlString += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>'
+                        }
+                        htmlString += '</p >';
+                    }
+                    $("#comments_load").html(htmlString);
+                });
+            });
+        });    
+    </script>
+
+</body>
+
+
+</html>

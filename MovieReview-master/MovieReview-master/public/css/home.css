@@ -1,0 +1,72 @@
+body {
+
+    background-color: lightgrey;
+
+}
+
+.mynav {
+
+
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background: #222;
+    color: #f2f2f2;
+    margin-left: 200px;
+    margin-right: 200px;
+
+}
+
+input[type=search] {
+    background: #555 url(http://hp-proliant.co.uk/qual_images/mob-search-icon.png) no-repeat 9px center;
+    border: solid 1px #ccc;
+    margin-top: 10px;
+    padding: 9px 10px 9px 32px;
+    width: 200px;
+}
+
+input[type=search]:focus {
+    width: 200px;
+    background-color: #ccc;
+    border-color: #333;
+    border: solid 1px #fff;
+}
+
+hr {
+    height: 2px;
+    color: black;
+    background-color: black;
+    width: 2px;
+
+}
+
+
+.base {
+    padding-top: 30px;
+    text-align: center;
+    font-family: 'DM Serif Text', serif;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+.navbar a:hover,
+.dropdown:hover .dropbtn,
+#navlist a:hover {
+    background-color: #b6b8ba;
+}

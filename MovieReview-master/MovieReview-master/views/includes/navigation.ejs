@@ -1,0 +1,59 @@
+<nav class="navbar  mynav" role="navigation" id="navbar">
+
+    <a class="navbar-brand" style="font-family: 'DM Serif Text', serif;
+            color: white;">Movie Review</a>
+
+    <ul class="nav navbar-nav navbar-right" id="navlist">
+        <li>
+            <a class="dropbtn">Genre
+                <i class="fa fa-caret-down"></i>
+            </a>
+        </li>
+        <li>
+
+            <% if (userId!= undefined ) { %>
+            <% let y="/movie/search/"+userId; %>
+
+            <form action="<%= y %>">
+        <li><input name="movieName" class="form-control" type="search" placeholder="Search Movie" aria-label="Search">
+        </li>
+
+        <li><a><span class="glyphicon glyphicon-search"></span></a>
+        </li>
+        </form>
+        <% }else{ %>
+        <% let y="/movie/search/"; %>
+
+        <form action="<%= y %>">
+            <li><input name="movieName" class="form-control" type="search" placeholder="Search Movie"
+                    aria-label="Search">
+            </li>
+
+            <li><a><span class="glyphicon glyphicon-search"></span></a>
+            </li>
+        </form>
+        <% } %>
+        </li>
+
+        <% if (userId!= undefined ) { %>
+        <% let x="/user/profile/"+userId; %>
+
+        <li><a href="<%= x %>" class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
+                      color: white;"><span class="glyphicon glyphicon-user"></span>User_Profile</a></li>
+        <li><a href="/user/logout" class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
+                      color: white;">Log out</a></li>
+
+        <% }else{ %>
+
+        <li><a href="/user/login" class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
+                      color: white;">Log in</a></li>
+        <li><a href="/user/register" class="btn btn-simple" style="font-family: 'DM Serif Text', serif;
+                      color: white;">Sign up</a></li>
+        <% } %>
+
+    </ul>
+
+
+
+
+</nav>
