@@ -10,7 +10,7 @@ exports.searchMovieForReview=(req,res,next)=>{
     let userId=req.params.userId;
     let movieName=req.query.movieName;
     let url = "http://www.omdbapi.com/?apikey="+APIKEY+"&t="+movieName;
-    
+
     let data='',parsedData;
     let isResponse,rating=0;
 
@@ -33,14 +33,20 @@ exports.searchMovieForReview=(req,res,next)=>{
                 let director=parsedData.Director;
                 let writer=parsedData.Writer;
                 let imdbId = parsedData.imdbID;
+                let actors=parsedData.Actors;
+                let runtime=parsedData.Runtime;
                 let movieReviewArray,movieRatingArray,userNameArray,dateArray;
 
-                for (let index = 0; index < ratingArray.length; index++) {
+                for (let index = 0; index < ratingArray.length && index < 1; index++) {
                     const element = ratingArray[index];
                     let result = element.Value.split("/");
+                    console.log(result);
                     rating += (Number(result[0]) / Number(result[1]))*5;
                 }
                 // console.log("imdbid "+imdbId);
+                console.log('rating '+rating);
+
+                let modifiedDateArray=[];
 
                 ReviewModel.findOne({imdbId:imdbId}).then(movie=>{
                     if(!movie){
@@ -53,6 +59,18 @@ exports.searchMovieForReview=(req,res,next)=>{
                     movieRatingArray=movie.movieRatingArray;
                     userNameArray=movie.userNameArray;
                     dateArray=movie.dateArray;
+
+                    console.log(dateArray);
+                    for (let i=0;i<dateArray.length;i++){
+                      let date=dateArray[i].toString();
+                      let modifiedDate=date.split(' ')
+                      let element='';
+                      for(let j=0;j<5;j++){
+                        element+=modifiedDate[j]+" ";
+                      }
+                      modifiedDateArray.push(element);
+                      console.log(modifiedDate);
+                    }
 
                     return res.render('movie_page', {
                         isResponse: isResponse,
@@ -69,14 +87,16 @@ exports.searchMovieForReview=(req,res,next)=>{
                         movieReviewArray:movieReviewArray,
                         movieRatingArray:movieRatingArray,
                         userNameArray:userNameArray,
-                        dateArray:dateArray,
-                        imdbId:imdbId
+                        dateArray:modifiedDateArray,
+                        imdbId:imdbId,
+                        actors:actors,
+                        runtime: runtime
                     });
                 }).catch(err=>{
                     console.log('ReviewModel Error '+err);
                 });
-                
-                
+
+
             }else{
                 isResponse=false;
                 return res.render('movie_not_found', {
@@ -98,8 +118,8 @@ exports.addReview=(req,res,next)=>{
 
     // console.log(req.body);
     const date=new Date();
-    
-    
+
+
     let userName;
 
     UserAboutModel.findOne({userId:userId}).then(user=>{

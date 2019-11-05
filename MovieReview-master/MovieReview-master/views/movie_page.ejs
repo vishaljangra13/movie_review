@@ -20,8 +20,8 @@
 
     <%- include('includes/navigation.ejs') %>
 
-    <h1 id="title"><%= title %></h1>
-    <h3 id="titledetails"><%= genre %></h3>
+    <h1 id="title"><%= title %>(<%= year %>)</h1>
+    <h3 id="titledetails"><%= runtime %> | <%= genre %></h3>
     <img id="movieImage" class="center" style="background: url(<%= posterUrl %>);">
     <br>
     <p id="details">
@@ -96,7 +96,8 @@
         <br>
         Language : <%= language %> <br>
         Director: <%= director %> <br>
-        Writers: <%= writer %>
+        Writers: <%= writer %><br>
+        Actors: <%= actors %>
     </p>
     <hr>
     <h3 style="color:white">Comments:</h3>
@@ -127,7 +128,7 @@
         const date=dateArray[index]; %>
         <i class='fa fa-user-circle' style='font-size:20px;color:white;margin-left:200px'> <%= userName %>
             (<%= date %>)</i>
-        <p id="titledetails"><%= movieReview %></p>
+        <p id="titledetails" style="font-size:20px;color:gold;margin-left:350px;"><%= movieReview %></p>
         <p style="margin-left:350px;color:white">
             RATING :
             <% if (movieRating < 1) { %>
@@ -192,6 +193,7 @@
             <span class="fa fa-star checked"></span>
             <% } %>
         </p>
+        <br><br>
         <% } %>
 
     </div>
